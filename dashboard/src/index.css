@@ -1,0 +1,128 @@
+/* ── Design tokens ───────────────────────────────────────────────────────────── */
+:root {
+  --bg: #F5F5F7;
+  --card: #FFFFFF;
+  --radius: 18px;
+  --shadow: 0 2px 20px rgba(0, 0, 0, 0.07);
+  --text-primary: #1D1D1F;
+  --text-secondary: #86868B;
+  --accent-blue: #0071E3;
+  --accent-green: #34C759;
+  --accent-red: #FF3B30;
+  --font: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", sans-serif;
+}
+
+/* ── Reset ───────────────────────────────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font);
+  background: var(--bg);
+  color: var(--text-primary);
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ── App layout ──────────────────────────────────────────────────────────────── */
+.app-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 32px 16px 64px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* ── Card base ───────────────────────────────────────────────────────────────── */
+.card {
+  background: var(--card);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 24px;
+  transition: all 0.2s ease;
+}
+
+/* ── Skeleton loader ─────────────────────────────────────────────────────────── */
+@keyframes shimmer {
+  0% {
+    background-position: -400px 0;
+  }
+  100% {
+    background-position: calc(400px + 100%) 0;
+  }
+}
+
+.skeleton {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e8e8e8 50%, #f0f0f0 75%);
+  background-size: 400px 100%;
+  animation: shimmer 1.6s ease-in-out infinite;
+  border-radius: 8px;
+}
+
+.skeleton-line {
+  height: 16px;
+  margin-bottom: 10px;
+}
+
+.skeleton-line.wide {
+  width: 55%;
+}
+
+.skeleton-line.short {
+  width: 28%;
+}
+
+.skeleton-line.full {
+  width: 90%;
+}
+
+.skeleton-block {
+  height: 80px;
+  width: 100%;
+  margin-bottom: 16px;
+  border-radius: 12px;
+}
+
+.skeleton-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* ── Pulsing dot (active campus session) ────────────────────────────────────── */
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.25;
+  }
+}
+
+.dot-pulse {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent-green);
+  animation: pulse 1.4s ease-in-out infinite;
+  flex-shrink: 0;
+}
+
+/* ── Error banner ────────────────────────────────────────────────────────────── */
+.error-banner {
+  padding: 16px 20px;
+  background: #FFF0EF;
+  color: var(--accent-red);
+  border-radius: var(--radius);
+  font-size: 14px;
+  line-height: 1.5;
+}
